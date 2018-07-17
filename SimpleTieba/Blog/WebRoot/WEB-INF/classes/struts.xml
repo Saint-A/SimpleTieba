@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+ "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+ "http://struts.apache.org/dtds/struts-2.3.dtd">
+ <struts>
+ 	<package name="default" namespace="/" extends="struts-default">
+ 		<action name="login" class="Action.Login">
+ 			<result name="success">/main.jsp</result>
+ 			<result name="loginerror">/index.jsp</result>
+ 		</action>
+ 		<action name="createblog" class="Action.CreateBlog">
+ 			<result name="success" type="chain">findmyblog</result>
+ 		</action>
+ 		<action name="findmyblog" class="Action.findblogbyusers">
+ 			<result name="success">/MyBlog.jsp</result>
+ 			<result name="nologin">/Nologin.jsp</result>
+ 		</action>
+ 		<action name="findallblog" class="Action.FindAllblog">
+ 			<result name="success">/content.jsp</result>
+ 		</action>
+ 		<action name="getarticle" class="Action.GetArticle">
+ 			<result name="success">/BlogArticle.jsp</result>
+ 		</action>
+ 		
+ 		<action name="savecomment" class="Action.SaveComment">
+ 			<result name="success" type="chain">getarticle</result>
+ 		</action>
+ 		<action name="deleteblog" class="Action.DeleteBlog">
+ 			<result name="success" type="chain">findallblog</result>
+ 		</action>
+ 		<action name="addfriend" class="Action.AddFriend">
+ 			<result name="success">/BlogArticle.jsp</result>
+ 			<result name="error">/BlogArticle.jsp</result>
+ 		</action>
+ 		<action name="register" class="Action.Register">
+ 			<result name="success">/success.jsp</result>
+ 		</action>
+ 		
+ 		<action name="getmycomment" class="Action.GetMyComment">
+ 			<result name="success">/showmycomment.jsp</result>
+ 		</action>
+ 
+ 	</package>
+ </struts>
